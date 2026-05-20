@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuker Mala</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #f3e5d8, #e7c9a5);
+            color: #fff;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #5a3a22, #8b5e3c);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        h3 {
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #4a2e15;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .opening {
+            background: url(https://www.kuekeringbellarosa.com/wp-content/uploads/2024/08/Macam-Macam-Kue-Kering.png) center/cover no-repeat;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 90px;
+            width: 100%;
+            padding: 70px;
+        }
+
+        .opening {
+            height: 90vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .opening::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .opening-content {
+            position: relative;
+            color: white;
+            z-index: 2;
+        }
+
+        .opening-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .opening-content p {
+            font-size: 18px;
+        }
+
+        .btn-cta {
+            background: linear-gradient(45deg, #5a3a22, #8b5e3c);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            margin: 5px;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.08);
+            background: linear-gradient(45deg, #33261c, #3a2822);
+        }
+
+        .btn-outline-cta {
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            margin: 5px;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-outline-cta:hover {
+            background: white;
+            color: #dc3545;
+        }
+
+        .section-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-box .btn {
+            background: linear-gradient(45deg, #5a3a22, #8b5e3c);
+            border: none;
+            border-radius: 25px;
+            padding: 8px 20px;
+            transition: 0.3s;
+        }
+
+        .section-box .btn:hover {
+            background: linear-gradient(45deg, #412a19, #5e4029);
+            transform: scale(1.05);
+        }
+
+        .galeri {
+            background-color: #f3e5d8;
+            padding: 80px 10%;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .galeri h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #6b4f3b;
+            margin-bottom: 50px;
+        }
+
+        .galeri-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .galeri-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .galeri-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .galeri-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .galeri-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .galeri-item h3 {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #5a3e2b;
+            font-weight: 600;
+        }
+
+        @media (max-width: 992px) {
+            .galeri-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .galeri-container {
+                grid-template-columns: 1fr;
+            }
+
+            .galeri h2 {
+                font-size: 28px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-box {
+            background: linear-gradient(180deg, #f3e5d8, #e6c29b);
+            border-radius: 10px;
+            padding: 20px;
+            color: #5a3a1a;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-form {
+            background: linear-gradient(180deg, #f3e5d8, #e6c29b);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 80px;
+            color: #5a3a1a;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-img {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+        }
+
+
+        .kontak {
+            background: linear-gradient(135deg, #f8ede3, #f1dfd1);
+            padding: 100px 10%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .kontak h2 {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            color: #5d4037;
+            margin-bottom: 60px;
+            letter-spacing: 1px;
+        }
+
+        .kontak-container {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .kontak-box {
+            flex: 1;
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(93, 64, 55, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .kontak-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(93, 64, 55, 0.12);
+        }
+
+        .kontak-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kontak-box input,
+        .kontak-box textarea {
+            margin-bottom: 22px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #e6d5c8;
+            font-size: 14px;
+            background-color: #faf6f2;
+            transition: all 0.3s ease;
+        }
+
+        .kontak-box input:focus,
+        .kontak-box textarea:focus {
+            border-color: #6b4f3b;
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(107, 79, 59, 0.15);
+            outline: none;
+        }
+
+        .kontak-box textarea {
+            resize: none;
+            height: 130px;
+        }
+
+        .kontak-box button {
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6b4f3b, #5d4037);
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .kontak-box button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(93, 64, 55, 0.3);
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            color: #4e342e;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-item i {
+            font-size: 20px;
+            color: #6b4f3b;
+            background-color: #f3e5d8;
+            padding: 10px;
+            border-radius: 50%;
+            transition: 0.3s ease;
+        }
+
+        .info-item:hover i {
+            background-color: #6b4f3b;
+            color: #ffffff;
+        }
+
+        @media (max-width: 992px) {
+            .kontak-container {
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .kontak h2 {
+                font-size: 30px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #fff3e6, #f8d7c4);
+            padding: 50px 20px 20px;
+            color: #5a3e36;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            align-items: start;
+        }
+
+        .footer-section {
+            text-align: left;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #8b4513;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .footer-section p i {
+            width: 20px;
+            margin-right: 8px;
+            color: #8b4513;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #5a3e36;
+            transition: 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #d2691e;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            background-color: #8b4513;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #d2691e;
+            transform: translateY(-5px);
+        }
+
+        .footer hr {
+            border: none;
+            height: 1px;
+            background-color: #d8b4a0;
+            margin: 20px 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section p i {
+                margin-right: 5px;
+            }
+
+            .social-icons a {
+                margin: 5px;
+            }
+        }
+
+        #faq {
+            background: linear-gradient(to bottom, #f8f4f1, #efe3db);
+            padding-top: 80px;
+            padding-bottom: 80px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #faq h3 {
+            color: #5a3a22;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+
+        .accordion-item {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(90, 58, 34, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(90, 58, 34, 0.15);
+        }
+
+        .accordion-button {
+            background-color: #ffffff;
+            color: #5a3a22;
+            font-weight: 500;
+            padding: 18px 20px;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #8b5e3c, #5a3a22);
+            color: #fff;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0.5);
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            filter: brightness(5);
+        }
+
+        .accordion-body {
+            background-color: #fffaf7;
+            color: #6b4b3a;
+            padding: 18px 22px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(90, 58, 34, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            #faq h2 {
+                font-size: 1.8rem;
+            }
+
+            .accordion-button {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <div class="logo">
+                <img src="https://png.pngtree.com/png-clipart/20210310/original/pngtree-3d-letter-r-wood-png-image_5949372.jpg"
+                    alt="Logo Toko">
+            </div>
+            <a class="navbar-brand fw-bold" href="#">Kuker Mala</a>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#FAQ">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="mt-5 pt-4">
+        <div class="opening"
+            style="background-image:url('https://www.kuekeringbellarosa.com/wp-content/uploads/2024/08/Macam-Macam-Kue-Kering.png')">
+
+            <div class="opening-content text-center">
+                <h1 class="fw-bold">WELCOME KUKER MALA</h1>
+                <p>Kue kering berkualitas & lezat</p>
+
+                <div class="hero-buttons mt-4">
+                    <a href="#produk" class="btn btn-cta">Lihat Produk</a>
+                    <a href="#kontak" class="btn btn-outline-cta">Pesan Sekarang</a>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+    </div>
+    </div>
+
+    <section class="my-5" id="tentang">
+        <h3 class="section-title">Tentang Kami</h3>
+        <div class="container">
+            <div class="section-box text-center">
+                <p>
+                    <strong>Kuker Mala</strong>, menghadirkan berbagai pilihan kue kering lezat yang dibuat dari
+                    bahan-bahan pilihan
+                    berkualitas tinggi dan diolah dengan penuh ketelitian. Setiap gigitan menghadirkan cita rasa
+                    istimewa yang renyah, manis, dan menggugah selera. Cocok dinikmati sebagai camilan harian untuk
+                    menemani waktu santai, disajikan sebagai hidangan spesial bagi tamu tercinta, maupun menjadi
+                    pelengkap sempurna dalam berbagai momen istimewa bersama keluarga. Dengan rasa yang konsisten
+                    dan tampilan yang menarik, Kuker Mala siap menambah kehangatan dan kebahagiaan di setiap
+                    kesempatan.
+                </p>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <section class="my-5" id="produk">
+        <h3 class="section-title text-center mb-4">Produk</h3>
+        <div class="container">
+            <div class="row g-4 text-center">
+
+                <div class="col-md-4">
+                    <div class="section-box p-4 shadow rounded">
+                        <img src="https://i.pinimg.com/originals/55/5e/8a/555e8a3621749a4b32af563b2d32d215.jpg"
+                            class="rounded-circle product-img mb-3" width="150" height="150">
+                        <h5><strong>Nastar</strong></h5>
+                        <p class="fw-bold">Rp 120.000</p>
+                        <a href="#" class="btn btn-danger mt-2">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="section-box p-4 shadow rounded">
+                        <img src="https://smexpo.pertamina.com/data-smexpo/images/products/3309/galleries/2023052413195715020_1715080736.jpg"
+                            class="rounded-circle product-img mb-3" width="150" height="150">
+                        <h5><strong>Putri Salju</strong></h5>
+                        <p class="fw-bold">Rp 100.000</p>
+                        <a href="#" class="btn btn-danger mt-2">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="section-box p-4 shadow rounded">
+                        <img src="https://cdn0-production-images-kly.akamaized.net/sfNnOwR7jX6_1TqzZ569ZQMXe-Y=/0x252:2048x1406/1360x766/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3124264/original/092916100_1589169937-shutterstock_1708052338.jpg"
+                            class="rounded-circle product-img mb-3" width="150" height="150">
+                        <h5><strong>Keju</strong></h5>
+                        <p class="fw-bold">Rp 120.000</p>
+                        <a href="#" class="btn btn-danger mt-2">Beli Sekarang</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="my-5 galeri" id="galeri">
+        <h2>Galeri Kuker Mala</h2>
+        <div class="galeri-container">
+
+            <div class="galeri-item">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.Ua6mjFqWEjG1ERX6YrmbEAHaE8?w=1200&h=800&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Nastar">
+                <h3>Nastar Lembut</h3>
+            </div>
+
+            <div class="galeri-item">
+                <img src="https://th.bing.com/th/id/OIP.hvRyMR4btWrJTW_MdfKNnwHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Kastengel">
+                <h3>Kastengel Keju</h3>
+            </div>
+
+            <div class="galeri-item">
+                <img src="https://th.bing.com/th/id/OIP.9JERIQeyzhyY7sM79iNGDAHaE5?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Putri Salju">
+                <h3>Putri Salju</h3>
+            </div>
+
+            <div class="galeri-item">
+                <img src="https://th.bing.com/th/id/OIP.hKz1EdcgnS7o_XcFsnqiwQHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Cookies Coklat">
+                <h3>Cookies Coklat</h3>
+            </div>
+
+            <div class="galeri-item">
+                <img src="https://asset-2.tstatic.net/jambi/foto/bank/images/Resep-Lidah-Kucing-Premium-243.jpg"
+                    alt="Lidah Kucing">
+                <h3>Lidah Kucing</h3>
+            </div>
+
+            <div class="galeri-item">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.pHLw-ZHP41PRDK0O15R-KgHaD4?w=1200&h=630&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Semprit">
+                <h3>Semprit Mawar</h3>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="my-5 kontak" id="kontak">
+        <h2>Hubungi Kami</h2>
+
+        <div class="kontak-container">
+            <div class="kontak-box">
+                <form>
+                    <input type="text" placeholder="Nama Lengkap" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Nomor WhatsApp" required>
+                    <textarea placeholder="Tulis pesan Anda..." required></textarea>
+                    <button type="submit">Kirim Pesan</button>
+                </form>
+            </div>
+
+            <div class="kontak-box">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Jl. Mawar No. 123, Palembang</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>+62 812 3456 7890</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@kukermala.com</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>Senin - Sabtu (08.00 - 17.00)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="my-5 " id="FAQ">
+        <div class="container">
+            <h3 class="section-title">Pertanyaan yang sering diajukan!</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Apakah kue dibuat fresh setiap hari?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Ya, semua kue kering Kuker Mala dibuat fresh dengan bahan berkualitas premium agar rasa
+                            tetap renyah dan lezat.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
+                            Berapa lama daya tahan kue?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Daya tahan kue sekitar 1–2 bulan dalam wadah tertutup rapat dan disimpan di tempat sejuk
+                            serta kering.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq3">
+                            Apakah bisa custom kemasan atau hampers?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Tentu! Kami menyediakan layanan custom hampers dan kemasan eksklusif sesuai kebutuhan acara
+                            Anda.
+                        </div>
+                    </div>
+    </section>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h3>Kue Kering Mala</h3>
+                    <p>
+                        Kue kering berkualitas premium yang dibuat dengan cinta dan bahan terbaik.
+                        Menghadirkan rasa lezat untuk menemani setiap momen spesial Anda.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#produk">Produk</a></li>
+                        <li><a href="#tentang">Tentang Kami</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Hubungi Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> info@kukermala.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +62 812-3456-7890</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="footer-bottom">
+                <p>© 2026 Kue Kering Mala | Dibuat dengan cinta, dinikmati dengan bahagia.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
